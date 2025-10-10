@@ -1,6 +1,9 @@
 footer {
-  background-color: var(--light-color);
   font-size: var(--body-font-size-xs);
+}
+.footer.block{
+  background-color: #002953;
+  color: white;
 }
 
 footer .footer > div {
@@ -17,4 +20,19 @@ footer .footer p {
   footer .footer > div {
     padding: 40px 32px 24px;
   }
+}
+
+.below-section p{
+  width: 100%;
+  width: 1060px;
+  align-items: center;
+  margin-left: 260px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.linkedin-wrapper p {
+  display: flex;
 }

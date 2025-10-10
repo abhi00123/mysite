@@ -171,18 +171,18 @@ button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
-  margin: 12px 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
+  /* margin: 8px 0; */
+  border: 1px solid white;
+  border-radius: 6px;
+  padding:  0.50em 0.8em;
   font-family: var(--body-font-family);
   font-style: normal;
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 0.8;
   text-align: center;
   text-decoration: none;
-  background-color: var(--link-color);
-  color: var(--background-color);
+  background-color: white;
+  color: black;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -193,14 +193,16 @@ a.button:hover,
 a.button:focus,
 button:hover,
 button:focus {
-  background-color: var(--link-hover-color);
+  background-color: #002953;
   cursor: pointer;
+  color: white;
 }
 
 button:disabled,
 button:disabled:hover {
   background-color: var(--light-color);
   cursor: unset;
+  border: 2px solid white;
 }
 
 a.button.secondary,

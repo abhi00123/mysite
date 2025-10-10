@@ -1,6 +1,7 @@
+
 /* header and nav layout */
 header .nav-wrapper {
-  background-color: var(--background-color);
+  background-color: #002953;
   width: 100%;
   z-index: 2;
   position: fixed;
@@ -34,7 +35,7 @@ header nav[aria-expanded='true'] {
   header nav {
     display: flex;
     justify-content: space-between;
-    gap: 0 32px;
+    gap: 0 140px;
     max-width: 1264px;
     padding: 0 32px;
   }
@@ -196,6 +197,10 @@ header nav .nav-sections ul > li > ul > li {
     position: relative;
     padding-right: 16px;
     cursor: pointer;
+    text-underline-offset: 10px;
+  }
+  header nav .nav-sections .nav-drop:hover{
+    text-decoration: underline;
   }
 
   header nav .nav-sections .nav-drop::after {
@@ -210,6 +215,8 @@ header nav .nav-sections ul > li > ul > li {
     border: 2px solid currentcolor;
     border-radius: 0 1px 0 0;
     border-width: 2px 2px 0 0;
+    transition: transform 0.1s ease;
+
   }
 
   header nav .nav-sections .nav-drop[aria-expanded='true']::after {
@@ -220,7 +227,8 @@ header nav .nav-sections ul > li > ul > li {
 
   header nav .nav-sections ul {
     display: flex;
-    gap: 24px;
+    gap: 48px;
+    color: white;
     margin: 0;
   }
 
@@ -233,16 +241,20 @@ header nav .nav-sections ul > li > ul > li {
     display: none;
     position: relative;
   }
+    header nav .nav-sections .default-content-wrapper > ul > li > ul :hover{
+    text-decoration: none;
+    background-color: #135aa1;
+  }
 
-  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul {
+  header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul{
     display: block;
     position: absolute;
     left: -24px;
     width: 200px;
     top: 150%;
     padding: 16px;
-    background-color: var(--light-color);
     white-space: initial;
+    background-color: #002953;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
@@ -254,7 +266,7 @@ header nav .nav-sections ul > li > ul > li {
     height: 0;
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--light-color);
+    border-bottom: 8px solid #002953;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
@@ -265,4 +277,30 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+.nav-extra-section {   /* Matches the dark header/nav color */
+  width: 100%;
+  position: fixed;
+}
+
+.nav-extra-section .section {
+  display: flex;
+  justify-content: center;
+  align-items: center;             /* Adjust height as needed */
+  border: none;
+  background-color: #0d2640;  /* To inherit navbar background */
+}
+
+.nav-extra-section .default-content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-extra-section .default-content-wrapper p {
+  margin-top: 69px;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
 }
