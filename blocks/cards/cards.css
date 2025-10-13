@@ -8,8 +8,12 @@
 }
 
 .cards > ul > li {
-  border: 2px solid #f41212;
-  background-color: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.cards > ul > li:hover{
+  background: linear-gradient(135deg, #5b9eff, #2f63a6);
+  color: white;
 }
 
 .cards .cards-card-body {
@@ -24,4 +28,24 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  height: 20px;
+}
+
+.cards-card-image{
+  width: 20px;
+  padding: 10px;
+  margin-top: 10px;
+  padding-left: 248px;
+  margin-bottom: 1px;
+}
+
+.cards > ul > li:hover .cards-card-image img {
+  filter: invert(1); /* Invert the arrow image to white */
+}
+
+.cards-card-body{
+  /* width: 72%; */
+}
+.cards{
+  cursor: pointer;
 }

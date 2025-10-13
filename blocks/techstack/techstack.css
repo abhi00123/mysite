@@ -1,0 +1,14 @@
+.techstack.block img{
+    height: 40px;
+    width: 40px;
+}
+
+.techstack.block {
+  display: flex;
+  gap: 20px;
+}
+
+.techstack-wrapper p:hover {
+  cursor: pointer;
+  font-weight: bold;
+}

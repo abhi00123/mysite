@@ -70,6 +70,7 @@
   }
 }
 
+
 body {
   display: none;
   margin: 0;
@@ -240,9 +241,9 @@ main > .section > div {
   padding: 0 24px;
 }
 
-main > .section:first-of-type {
+/* main > .section:first-of-type {
   margin-top: 0;
-}
+} */
 
 @media (width >= 900px) {
   main > .section > div {

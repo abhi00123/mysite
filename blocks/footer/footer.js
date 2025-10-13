@@ -24,16 +24,54 @@ export default async function decorate(block) {
     }
   });
 
-  // Clear the block and append the country container inside as the only content
+  // Clear block and append only country section
   block.textContent = '';
   if (countrySection) {
     block.appendChild(countrySection);
   }
 
-  // Move the other footer content outside the footer block (after)
+  // Move remaining sections after the block
   if (otherNodes.length > 0) {
     otherNodes.forEach(node => {
       block.parentNode.insertBefore(node, block.nextSibling);
     });
+  }
+
+  // --- Footer Disclaimer Logic ---
+  const footerWrapper = block.closest('.footer-wrapper');
+  if (footerWrapper) {
+    const belowSections = footerWrapper.querySelectorAll('.below-section');
+    if (belowSections.length > 0) {
+      const lastBelowSection = belowSections[belowSections.length - 1];
+      if (lastBelowSection.textContent.includes('Bajaj Finserv Direct Limited')) {
+        const footerLast = document.createElement('div');
+        footerLast.className = 'footer-last';
+        footerLast.innerHTML = lastBelowSection.innerHTML;
+        footerWrapper.insertAdjacentElement('afterend', footerLast);
+        lastBelowSection.remove();
+      }
+    }
+  }
+
+  // --- 🌍 Country Hover Functionality ---
+  const addressBlock = document.querySelector('.address-main-footer.block');
+  if (addressBlock) {
+    const countryTabs = addressBlock.querySelectorAll(':scope > div:nth-child(1) p');
+    const countryGroups = addressBlock.querySelectorAll(':scope > div.country-group');
+
+    countryTabs.forEach((tab, index) => {
+      tab.addEventListener('mouseenter', () => {
+        countryTabs.forEach(t => t.classList.remove('active'));
+        countryGroups.forEach(g => g.classList.remove('active'));
+        tab.classList.add('active');
+        countryGroups[index].classList.add('active');
+      });
+    });
+
+    // Default active country (India)
+    if (countryTabs.length > 0) {
+      countryTabs[0].classList.add('active');
+      countryGroups[0].classList.add('active');
+    }
   }
 }

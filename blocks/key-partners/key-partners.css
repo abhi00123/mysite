@@ -1,0 +1,118 @@
+.key-partners-container {
+  
+  margin: 0 auto;
+  padding: 32px 0 36px 0;
+  width: 100%;
+}
+
+.default-content-wrapper h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #00324d;
+  margin-bottom: 38px;
+  margin-left: 20px;
+  letter-spacing: -1px;
+}
+
+.key-partners-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.key-partners.block > div {
+  display: flex;
+  gap: 200px;
+  width: 100%;
+}
+
+/* Image grid (left) */
+.key-partners.block > div > div:first-child {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 24px;
+  padding: 15px;
+}
+
+/* Card style for each picture panel */
+.key-partners.block picture {
+  background: #fff;
+  border: 1.5px solid #ebebeb;
+  border-radius: 16px;
+  /* padding: 24px 28px; */
+  box-shadow: 0 2px 10px rgba(40, 44, 63, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 210px;
+  height: 93px;
+  transition: box-shadow 0.2s;
+}
+
+/* Make images scale neatly inside card */
+.key-partners.block img {
+  /* max-width: 150px;
+  width: 100%; */
+  height: auto;
+  object-fit: contain;
+  display: block;
+  width: 194px;
+  height: 60px;
+}
+
+/* Description block (right) */
+.key-partners.block > div > div:last-child {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    max-width: 440px;
+}
+
+.key-partners.block h2,
+.key-partners.block #the-best-of-our-partner-ecosystem-for-your-business {
+  font-size: 2.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #202124;
+  letter-spacing: -0.5px;
+}
+
+.key-partners.block p {
+  font-size: 1.15rem;
+  color: #414141;
+  line-height: 1.58;
+  margin: 0;
+  max-width: 97%;
+  display: flex;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+@media (max-width: 950px) {
+  .key-partners-wrapper,
+  .key-partners.block > div {
+    flex-direction: column;
+    gap: 26px;
+  }
+  .key-partners.block > div > div:first-child {
+    grid-template-columns: 1fr 1fr;
+    min-width: 0;
+    max-width: 100%;
+    gap: 10px;
+  }
+  .key-partners.block > div > div:last-child{
+    max-width: 100%;
+    min-width: 0;
+    padding-top: 0;
+    background-color: pink;
+  }
+  .default-content-wrapper h2 {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+.key-partners.block > div > div:first-child {
+    gap: 100px;
+}

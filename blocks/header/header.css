@@ -243,7 +243,7 @@ header nav .nav-sections ul > li > ul > li {
   }
     header nav .nav-sections .default-content-wrapper > ul > li > ul :hover{
     text-decoration: none;
-    background-color: #135aa1;
+    background-color: black;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li[aria-expanded='true'] > ul{
@@ -255,6 +255,7 @@ header nav .nav-sections ul > li > ul > li {
     padding: 16px;
     white-space: initial;
     background-color: #002953;
+    border-radius: 6px;
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul::before {
@@ -270,7 +271,8 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections .default-content-wrapper > ul > li > ul > li {
-    padding: 8px 0;
+    margin: 8px 0;
+    margin-left: 0;
   }
 }
 
@@ -279,28 +281,31 @@ header nav .nav-tools {
   grid-area: tools;
 }
 
-.nav-extra-section {   /* Matches the dark header/nav color */
+.nav-extra-section {   
   width: 100%;
   position: fixed;
+  z-index: 2;
+  padding-top: 0; /* Removed extra padding */
+  margin-top: 64px;
 }
 
 .nav-extra-section .section {
   display: flex;
   justify-content: center;
-  align-items: center;             /* Adjust height as needed */
-  border: none;
+  align-items: center;             
   background-color: #0d2640;  /* To inherit navbar background */
 }
 
 .nav-extra-section .default-content-wrapper {
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .nav-extra-section .default-content-wrapper p {
-  margin-top: 69px;
+  margin-top: 0; /* Removed extra margin */
   color: #ffffff;
   font-size: 16px;
   font-family: 'Rubik', sans-serif;
+  padding-top: 5px;
 }
+
