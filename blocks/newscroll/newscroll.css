@@ -1,0 +1,120 @@
+/* Flexbox layout for the block */
+.newscroll.block {
+  display: flex;
+  flex-direction: column;
+  position: absolute; /* Stack all testimonials on top of each other */
+  top: 0;
+  left: 0;
+  width: 400px; /* Ensure testimonials take up full width */
+  height: auto; /* Make the container's height dynamic */
+  visibility: hidden; /* Initially hide all testimonials */
+  transition: opacity 1s ease-in-out; /* Smooth fade transition for testimonials */
+}
+
+/* Combined images container */
+.combined-images {
+  display: flex;
+  gap: 20px; /* Optional: space between images */
+  transition: transform 1s ease-in-out; /* Smooth transition for image zoom */
+  margin-left: 500px; /* Adjust to position images */
+  z-index: -1;
+}
+
+/* Flex layout for the section container */
+.section.newscroll-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+  margin-bottom: 160px;
+}
+
+/* Flex layout for the newscroll-wrapper */
+.newscroll-wrapper {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+  position: relative; /* Ensure stacking of testimonials */
+  height: auto;
+}
+
+/* Zoom effect on images */
+.zoom-effect {
+  transform: scale(1.1); /* Zoom in effect */
+  transition: transform 1s ease-in-out; /* Apply transition effect for zoom */
+}
+
+/* Hidden elements */
+.hidden {
+  visibility: hidden; /* Hide elements but still occupy space */
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+/* Active testimonial will be visible */
+.newscroll-wrapper .newscroll.block > div.active {
+  visibility: visible;  /* Show active testimonial */
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction for active testimonial */
+  z-index: 2; /* Ensure the active testimonial is on top */
+  position: absolute; /* Overlap all testimonials in the same place */
+}
+
+/* Style for h3 titles (optional) */
+.newscroll-wrapper .newscroll.block h3 {
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+Combined images container 
+
+/* Ensure all image divs are stacked */
+.combined-images > div {
+  position: absolute; /* Stack images on top of each other */
+  top: 0;
+  left: 0;
+  visibility: hidden; /* Initially hide all images */
+  opacity: 0; /* Initially hide all images */
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out; /* Smooth fade transition */
+}
+
+/* Active image div will be visible */
+.combined-images > div.active {
+  visibility: visible; /* Show active image */
+  opacity: 1; /* Make the active image visible */
+  z-index: 2; /* Ensure the active image is on top */
+  transform: scale(1); /* Reset any scaling on active image */
+}
+
+/* Image size adjustments for the first, second, and third images */
+.combined-images > div:first-child {
+  transform: scale(1.5); /* First image larger than the others */
+  transition: transform 1s ease-in-out;
+  margin: 40px;
+  width: 260px;
+}
+
+.combined-images > div:nth-child(2) {
+  transform: scale(1); /* Second image normal size */
+  transition: transform 1s ease-in-out;
+  margin-top: 69px;
+  width: 160px;
+}
+
+.combined-images > div:nth-child(3) {
+  transform: scale(1); /* Third image normal size */
+  transition: transform 1s ease-in-out;
+  margin-top: 78px;
+  width: 170px;
+}
+
+/* Zoom effect on images */
+.zoom-effect {
+  transform: scale(1.1); /* Zoom in effect */
+  transition: transform 1s ease-in-out; /* Smooth transition for zoom */
+}
+
+/* Ensure proper styling for images */
+.combined-images img {
+  width: 100%; /* Ensure images take full width of their container */
+  height: auto; /* Maintain image aspect ratio */
+}

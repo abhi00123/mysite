@@ -8,7 +8,62 @@
   gap: 20px;
 }
 
+.list{
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.list:hover{
+    text-decoration: underline;
+    text-decoration-color: orange;
+    text-underline-offset: 10px;
+    
+}
+
 .techstack-wrapper p:hover {
   cursor: pointer;
   font-weight: bold;
 }
+
+
+.sublist {
+  display: none;  /* Hide the sublist initially */
+}
+
+.sublist.show {
+  display: block;  /* Show the sublist when the 'show' class is added */
+  display: flex;
+  gap: 20px;
+}
+
+.sublist p {
+  display: flex;
+  border: 2px solid black;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 10px 0;
+  padding: 16px 12px;
+  height: 51px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  line-height: 22px;
+  width: 180px;
+}
+
+.sublist p:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sublist p img {
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+}
+
+

@@ -1,0 +1,131 @@
+/* Overall Container for Carousel */
+.carouselnew {
+  overflow-x: auto;
+  padding: 20px;
+  gap: 20px; /* Spacing between items */
+  scrollbar-width: none; /* Hide scrollbar for a smoother look */
+}
+
+.carouselnew::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Webkit browsers */
+}
+
+/* Styling Each Carousel Item */
+.carousel-item {
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.carousel-item:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Text Content Styles */
+.text-content {
+  padding: 20px;
+  flex: 1; /* Take up available space */
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1c3c5c;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #5c5c5c;
+  margin-bottom: 20px;
+}
+
+.read-more {
+  font-size: 14px;
+  color: #1a73e8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.read-more:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Image Styling */
+.image-content {
+  text-align: center;
+  padding: 10px;
+  flex-basis: 40%; /* Fix image size */
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover; /* Ensure the image fills the area */
+}
+
+/* Stats Section Styling */
+.stats {
+  padding: 15px;
+  display: flex;
+  flex-direction: column; /* Align stats vertically */
+  justify-content: space-between;
+  flex-basis: 30%; /* Limit stats section width */
+}
+
+p.stat {
+  display: flex;
+  margin-bottom: 10px; /* Space between each stat item */
+}
+
+.stat .number {
+  font-weight: bold;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.stat .label {
+  color: #5c5c5c;
+}
+
+.read-more {
+  font-size: 14px;
+  color: #1a73e8;
+  font-weight: bold;
+  text-align: left;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
+
+/* Make the Carousel Responsive */
+@media (max-width: 768px) {
+  .carouselnew {
+    gap: 10px;
+  }
+
+  .carousel-item {
+    flex-direction: column; /* Stack items vertically on small screens */
+    align-items: center; /* Align items vertically */
+    width: 100%;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .stats {
+    width: 100%; /* Make stats section full width on small screens */
+    padding: 10px;
+  }
+}
