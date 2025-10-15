@@ -9,6 +9,7 @@
   height: auto; /* Make the container's height dynamic */
   visibility: hidden; /* Initially hide all testimonials */
   transition: opacity 1s ease-in-out; /* Smooth fade transition for testimonials */
+  z-index: -1;
 }
 
 /* Combined images container */
