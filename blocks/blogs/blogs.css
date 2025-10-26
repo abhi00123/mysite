@@ -1,0 +1,286 @@
+/* --- SECTION CONTAINER --- */
+.blogs-container {
+  width: 100%;
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.blogs-container .default-content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 40px;
+}
+
+.blogs-container h2 {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1f2f3d;
+  margin: 0;
+}
+
+/* --- CAROUSEL WRAPPER --- */
+.blogs-wrapper {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+  isolation: isolate; /* Creates stacking context */
+}
+
+.blogs.block {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 20px;
+}
+
+/* Hide scrollbar */
+.blogs.block::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- CSS ARROW BUTTONS (FIXED Z-INDEX) --- */
+.blogs-wrapper::before,
+.blogs-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2; /* Lower z-index - won't overlap header */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px;
+}
+
+/* Previous Arrow (Left) */
+.blogs-wrapper::before {
+  left: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='15 18 9 12 15 6' stroke='%23333' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Next Arrow (Right) */
+.blogs-wrapper::after {
+  right: 10px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='9 18 15 12 9 6' stroke='%23333' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* Hover State - Blue Background with White Arrow */
+.blogs-wrapper::before:hover,
+.blogs-wrapper::after:hover {
+  background-color: #005a9c;
+  border-color: #005a9c;
+  box-shadow: 0 4px 12px rgba(0, 90, 156, 0.3);
+}
+
+.blogs-wrapper::before:hover {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='15 18 9 12 15 6' stroke='%23ffffff' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.blogs-wrapper::after:hover {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='9 18 15 12 9 6' stroke='%23ffffff' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+/* --- CARD STYLING (NO SHADOW, NO HOVER) --- */
+.blogs.block > div {
+  min-width: 320px;
+  max-width: 320px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: none;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- IMAGE SECTION (HOVER ONLY ON IMAGE) --- */
+.blogs.block > div > div:first-child {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.blogs.block > div > div:first-child picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.blogs.block > div > div:first-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Image hover zoom */
+.blogs.block > div:hover > div:first-child img {
+  transform: scale(1.05);
+}
+
+/* --- CARD CONTENT --- */
+.blogs.block > div > div:nth-child(2),
+.blogs.block > div > div:nth-child(3),
+.blogs.block > div > div:nth-child(4),
+.blogs.block > div > div:nth-child(5) {
+  padding: 0 20px;
+}
+
+/* Date */
+.blogs.block > div > div:nth-child(2) {
+  padding-top: 20px;
+}
+
+.blogs.block > div > div:nth-child(2) p {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Title */
+.blogs.block > div > div:nth-child(3) p {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2f3d;
+  margin: 12px 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Description */
+.blogs.block > div > div:nth-child(4) p {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 12px 0;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Read More Link */
+.blogs.block > div > div:nth-child(5) {
+  margin-top: auto;
+  padding-bottom: 20px;
+}
+
+.blogs.block > div > div:nth-child(5) p {
+  margin: 0;
+}
+
+.blogs.block > div > div:nth-child(5) a.button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #005a9c;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.blogs.block > div > div:nth-child(5) a.button:hover {
+  color: #003d6b;
+  text-decoration: underline;
+  background: none;
+}
+
+/* --- VIEW ALL BUTTON --- */
+.blogs-container .default-content-wrapper:last-child {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px 0px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.blogs-container .default-content-wrapper:last-child p.button-container {
+  margin: 0;
+}
+
+.blogs-container .default-content-wrapper:last-child a.button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #005a9c;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.blogs-container .default-content-wrapper:last-child a.button:hover {
+  color: #003d6b;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media screen and (max-width: 768px) {
+  .blogs-wrapper {
+    padding: 0 50px;
+  }
+
+  .blogs-wrapper::before,
+  .blogs-wrapper::after {
+    width: 40px;
+    height: 40px;
+    background-size: 18px;
+  }
+
+  .blogs-container h2 {
+    font-size: 28px;
+  }
+
+  .blogs.block > div {
+    min-width: 280px;
+    max-width: 280px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .blogs-wrapper {
+    padding: 0 20px;
+  }
+
+  .blogs-wrapper::before,
+  .blogs-wrapper::after {
+    display: none;
+  }
+
+  .blogs-container {
+    padding: 40px 0;
+  }
+
+  .blogs-container h2 {
+    font-size: 24px;
+  }
+
+  .blogs.block > div {
+    min-width: 260px;
+    max-width: 260px;
+  }
+
+  .blogs.block > div > div:first-child {
+    height: 160px;
+    }
+}
