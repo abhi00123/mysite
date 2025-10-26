@@ -2,3 +2,30 @@
     display: flex;
     gap: 32px;
 }
+
+h1 {
+    /* font-family: 'Rubik', sans-serif; */
+    font-weight: 500; /* Example: applying a specific weight */
+  }
+
+  .smallrow {
+    display: flex;
+    gap: 32px;
+  }
+
+
+  .default-content-wrapper span {
+    color: #00294d; /* Default gray */
+    transition: color 0.3s ease, opacity 0.3s ease;
+    font-size: 40px;
+    font-weight: 500;
+    opacity: 0.3;
+  }
+
+  .default-content-wrapper span.visible {
+    opacity: 1;
+  }
+
+  .default-content-wrapper span.highlight.visible {
+    color: red; /* Only red when both highlight and visible */
+  }
