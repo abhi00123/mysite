@@ -203,24 +203,22 @@ header nav .nav-sections ul > li > ul > li {
   }
 
   header nav .nav-sections .nav-drop::after {
-    content: '';
-    display: inline-block;
-    position: absolute;
-    top: 0.5em;
-    right: 2px;
-    transform: rotate(135deg);
-    width: 6px;
-    height: 6px;
-    border: 2px solid currentcolor;
-    border-radius: 0 1px 0 0;
-    border-width: 2px 2px 0 0;
-    transition: transform 0.1s ease;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 44%;
+  right: 0px;
+  transform: translateY(-50%) rotate(135deg);
+  width: 8px;
+  height: 8px;
+  border: 2px solid currentcolor;
+  border-width: 2px 2px 0 0;
+  border-radius: 0 1px 0 0;
+  transition: transform 0.10s ease;
   }
 
   header nav .nav-sections .nav-drop:hover::after {
-    top: unset;
-    bottom: 0.5em;
-    transform: rotate(315deg);
+  transform: rotate(315deg);
   }
 
   header nav .nav-sections ul {

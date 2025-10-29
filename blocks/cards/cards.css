@@ -43,9 +43,6 @@
   filter: invert(1); /* Invert the arrow image to white */
 }
 
-.cards-card-body{
-  /* width: 72%; */
-}
 .cards{
   cursor: pointer;
 }
