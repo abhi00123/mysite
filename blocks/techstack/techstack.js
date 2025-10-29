@@ -1,50 +1,76 @@
-// Get all div elements within the techstack-wrapper that are directly inside techstack block
-const techStackDivs = document.querySelectorAll('.techstack-wrapper .techstack > div');
+export default function decorate(block) {
+  const techstackBlock = block;
+  if (!techstackBlock) return;
 
-// Loop through each div and apply the correct classes
-techStackDivs.forEach((div) => {
-  // Check if the div contains a p tag (this will be the list div)
-  if (div.querySelector('p')) {
-    // Apply the 'techs' class to the outer div
-    div.classList.add('techs');
-    
-    // Apply the 'list' class to the first div containing the p tag
-    const firstDiv = div.querySelector('div');
-    if (firstDiv) {
-      firstDiv.classList.add('list');
+  // Step 1: Add 'techs', 'list', and 'sublist' classes dynamically like your old JS
+  const techStackDivs = techstackBlock.querySelectorAll(':scope > div');
+
+  techStackDivs.forEach((div) => {
+    if (div.querySelector('p')) {
+      div.classList.add('techs');
+
+      const firstDiv = div.querySelector('div');
+      if (firstDiv) {
+        firstDiv.classList.add('list');
+      }
+
+      const nextDiv = div.querySelector('div + div');
+      if (nextDiv) {
+        nextDiv.classList.add('sublist');
+      }
     }
-
-    // Apply the 'sublist' class to the next div (the sublist)
-    const nextDiv = div.querySelector('div + div');
-    if (nextDiv) {
-      nextDiv.classList.add('sublist');
-    }
-  }
-});
-
-// Select all the 'list' divs (clickable tabs)
-const listDivs = document.querySelectorAll('.techs .list');
-
-// Add click event listener to each 'list' div
-listDivs.forEach(list => {
-  list.addEventListener('click', () => {
-    // Close all sublists
-    const allSublists = document.querySelectorAll('.techs .sublist');
-    allSublists.forEach(sublist => sublist.classList.remove('show'));
-
-    // Find the next sibling (sublist corresponding to the clicked list)
-    const sublist = list.nextElementSibling;
-
-    // Show the clicked sublist
-    sublist.classList.add('show');
   });
-});
 
-// Ensure the first sublist is open by default
-const firstTech = document.querySelector('.techs .list');
-if (firstTech) {
-  const firstSublist = firstTech.nextElementSibling;
-  if (firstSublist) {
-    firstSublist.classList.add('show');
+  // Step 2: Ensure central containers exist
+  let listsContainer = techstackBlock.querySelector('.lists');
+  let panelsContainer = techstackBlock.querySelector('.panels');
+
+  if (!listsContainer) {
+    listsContainer = document.createElement('div');
+    listsContainer.className = 'lists';
+    techstackBlock.insertBefore(listsContainer, techstackBlock.firstChild);
   }
+
+  if (!panelsContainer) {
+    panelsContainer = document.createElement('div');
+    panelsContainer.className = 'panels';
+    techstackBlock.appendChild(panelsContainer);
+  }
+
+  // Step 3: Move each list/sublist pair into centralized containers
+  const techGroups = Array.from(techstackBlock.querySelectorAll(':scope > .techs'));
+  const normalizeKey = (str) => str.trim().toLowerCase().replace(/\s+/g, '-');
+
+  techGroups.forEach(group => {
+    const listEl = group.querySelector(':scope > .list');
+    const sublistEl = group.querySelector(':scope > .sublist');
+    if (!listEl || !sublistEl) {
+      group.remove();
+      return;
+    }
+
+    const key = normalizeKey(listEl.textContent);
+    listEl.dataset.key = key;
+    sublistEl.dataset.key = key;
+
+    listsContainer.appendChild(listEl);
+    panelsContainer.appendChild(sublistEl);
+    group.remove();
+  });
+
+  // Step 4: Tab interaction logic (same behavior as your old click-based show/hide)
+  const tabs = Array.from(listsContainer.querySelectorAll('.list'));
+  const panels = Array.from(panelsContainer.querySelectorAll('.sublist'));
+
+  function activateTab(key) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.key === key));
+    panels.forEach(p => p.classList.toggle('show', p.dataset.key === key));
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => activateTab(tab.dataset.key));
+  });
+
+  // Step 5: Show first sublist by default
+  if (tabs.length) activateTab(tabs[0].dataset.key);
 }

@@ -1,131 +1,193 @@
-/* Overall Container for Carousel */
-.carouselnew {
-  overflow-x: auto;
-  padding: 20px;
-  gap: 20px; /* Spacing between items */
-  scrollbar-width: none; /* Hide scrollbar for a smoother look */
+.carouselnew.block {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 24px 56px; /* room for nav buttons */
 }
 
-.carouselnew::-webkit-scrollbar {
-  display: none; /* Hide scrollbar in Webkit browsers */
+/* Two columns: left info, right slider */
+.carousel-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .carousel-grid { grid-template-columns: 1fr; }
 }
 
-/* Styling Each Carousel Item */
-.carousel-item {
-  display: flex;
-  flex-direction: row; /* Align items horizontally */
-  justify-content: space-between;
-  width: 100%;
-  margin: 10px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease;
+/* ===== Left: Info panel ===== */
+.info-panel {
+  display: grid;
+  width: 440px;
 }
-
-.carousel-item:hover {
-  transform: scale(1.05); /* Scale up on hover */
+.info-panel .title {
+  margin: 0;
+  font-size: clamp(22px, 3.2vw, 30px);
+  font-weight: 700;
+  line-height: 1.25;
+  color: #0f172a;
 }
-
-/* Text Content Styles */
-.text-content {
-  padding: 20px;
-  flex: 1; /* Take up available space */
-}
-
-.title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #1c3c5c;
-  margin-bottom: 10px;
-}
-
-.description {
+.info-panel .description {
+  margin: 0;
   font-size: 14px;
-  color: #5c5c5c;
-  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #475569;
 }
 
-.read-more {
-  font-size: 14px;
-  color: #1a73e8;
-  text-decoration: none;
-  font-weight: bold;
+/* Stats row */
+.info-panel .stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  align-items: start;
+  margin-top: 8px;
 }
-
-.read-more:hover {
-  text-decoration: underline; /* Underline on hover */
-}
-
-/* Image Styling */
-.image-content {
+.info-panel .stat {
+  margin: 0;
+  padding: 12px 16px;
   text-align: center;
-  padding: 10px;
-  flex-basis: 40%; /* Fix image size */
+  color: #0f172a;
+}
+.info-panel .stat:not(:last-of-type) {
+  border-right: 1px solid #cbd5e1;
+}
+.info-panel .stat .number {
+  display: block;
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 800;
+  color: #005dac;
+}
+.info-panel .stat .label {
+  display: block;
+  font-size: 12px;
+  color: #475569;
+  line-height: 1.4;
+}
+.info-panel .stat br {
+  display: none;
+}
+.info-panel .stat::first-line {
+  font-weight: 800;
 }
 
-.carousel-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  object-fit: cover; /* Ensure the image fills the area */
+/* Read more */
+.info-panel .read-more {
+  grid-column: 1/-1;
+  margin-top: 12px;
+  color: #0b5fff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
 }
-
-/* Stats Section Styling */
-.stats {
-  padding: 15px;
-  display: flex;
-  flex-direction: column; /* Align stats vertically */
-  justify-content: space-between;
-  flex-basis: 30%; /* Limit stats section width */
-}
-
-p.stat {
-  display: flex;
-  margin-bottom: 10px; /* Space between each stat item */
-}
-
-.stat .number {
-  font-weight: bold;
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.stat .label {
-  color: #5c5c5c;
-}
-
-.read-more {
-  font-size: 14px;
-  color: #1a73e8;
-  font-weight: bold;
-  text-align: left;
-}
-
-.read-more:hover {
+.info-panel .read-more:hover {
   text-decoration: underline;
 }
 
-/* Make the Carousel Responsive */
-@media (max-width: 768px) {
-  .carouselnew {
-    gap: 10px;
-  }
+/* ===== Right: Image slider (Flex for reliable width) ===== */
+.thumbs {
+  position: relative;
+  overflow: hidden;
+  padding-right: 80px; /* Space for peek of third card */
+  width: 560px;
+}
 
-  .carousel-item {
-    flex-direction: column; /* Stack items vertically on small screens */
-    align-items: center; /* Align items vertically */
-    width: 100%;
-  }
+.thumb-track {
+  display: flex;
+  gap: 24px; /* JS reads this; keep in sync */
+  transition: transform 400ms cubic-bezier(.22,.61,.36,1);
+  will-change: transform;
+  margin-right: -80px;
+}
 
-  .carousel-image {
-    width: 100%;
-    height: auto;
-  }
+/* Show 2 full cards + peek of third on desktop */
+.thumb-card {
+  flex: 0 0 calc((100% - 78px) / 2);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  position: relative;
+  transition: opacity 0.3s ease;
+  height: 270px;
+}
 
-  .stats {
-    width: 100%; /* Make stats section full width on small screens */
-    padding: 10px;
-  }
+.thumb-card:not(.active)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .thumb-card { flex-basis: 100%; }
+}
+
+/* Make the whole card clickable */
+.thumb-card button {
+  all: unset;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Image sizing */
+.thumb-card picture,
+.thumb-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thumb-card.active {
+  outline: 2px solid #0b5fff;
+  outline-offset: 0;
+}
+
+/* ===== Nav (bottom-right inside the carousel) ===== */
+.carousel-nav {
+  position: absolute;
+  right: -80px;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.carousel-nav button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 9999px;
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(2,8,20,0.06);
+  background: #fff;
+  font-size: 22px;
+  transition: transform 0.2s ease;
+}
+.carousel-nav button:hover {
+  transform: translateY(-1px);
+}
+.carousel-nav button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.carousel-nav .prev::before {
+  content: "‹";
+}
+.carousel-nav .next::before {
+  content: "›";
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb-track { transition: none; }
+  .carousel-nav button { transition: none; }
 }

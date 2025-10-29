@@ -10,6 +10,9 @@
  * governing permissions and limitations under the License.
  */
 
+/* ✅ Import Rubik font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
 :root {
   /* colors */
   --background-color: white;
@@ -19,9 +22,9 @@
   --link-color: #3b63fb;
   --link-hover-color: #1d3ecf;
 
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  /* ✅ Updated fonts */
+  --body-font-family: 'Rubik', sans-serif;
+  --heading-font-family: 'Rubik', sans-serif;
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -40,16 +43,10 @@
   --nav-height: 64px;
 }
 
-/* fallback fonts */
+/* ✅ fallback font (system) */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: 'rubik-fallback';
+  size-adjust: 100%;
   src: local('Arial');
 }
 
@@ -70,7 +67,7 @@
   }
 }
 
-
+/* ========== Base Styles ========== */
 body {
   display: none;
   margin: 0;
@@ -99,6 +96,7 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
+/* ========== Headings ========== */
 h1,
 h2,
 h3,
@@ -120,6 +118,7 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
+/* ========== Text Elements ========== */
 p,
 dl,
 ol,
@@ -143,6 +142,7 @@ pre {
   white-space: pre;
 }
 
+/* ========== Layout ========== */
 main > div {
   margin: 40px 16px;
 }
@@ -154,7 +154,7 @@ button {
   font: inherit;
 }
 
-/* links */
+/* ========== Links ========== */
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
@@ -166,22 +166,20 @@ a:hover {
   text-decoration: underline;
 }
 
-/* buttons */
+/* ========== Buttons ========== */
 a.button:any-link,
 button {
   box-sizing: border-box;
   display: inline-block;
   max-width: 100%;
-  /* margin: 8px 0; */
   border: 1px solid white;
   border-radius: 6px;
-  padding:  0.50em 0.8em;
+  padding: 0.5em 0.8em;
   font-family: var(--body-font-family);
   font-style: normal;
   font-weight: 500;
   line-height: 0.8;
   text-align: center;
-  text-decoration: none;
   background-color: white;
   color: black;
   cursor: pointer;
@@ -195,7 +193,6 @@ a.button:focus,
 button:hover,
 button:focus {
   background-color: #002953;
-  cursor: pointer;
   color: white;
 }
 
@@ -213,12 +210,14 @@ button.secondary {
   color: var(--text-color);
 }
 
+/* ========== Images ========== */
 main img {
   max-width: 100%;
   width: auto;
   height: auto;
 }
 
+/* ========== Icons ========== */
 .icon {
   display: inline-block;
   height: 24px;
@@ -230,7 +229,7 @@ main img {
   width: 100%;
 }
 
-/* sections */
+/* ========== Sections ========== */
 main > .section {
   margin: 40px 0;
 }
@@ -241,17 +240,13 @@ main > .section > div {
   padding: 0 24px;
 }
 
-/* main > .section:first-of-type {
-  margin-top: 0;
-} */
-
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
   }
 }
 
-/* section metadata */
+/* ========== Section Metadata ========== */
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);

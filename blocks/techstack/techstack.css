@@ -1,44 +1,30 @@
+/* Image sizes inside techstack block */
 .techstack.block img{
-    height: 40px;
-    width: 40px;
+  height: 40px;
+  width: 40px;
 }
 
-.techstack.block {
-  display: flex;
-  gap: 20px;
-}
-
+/* Category list (tab) text */
 .list{
-    font-size: 20px;
-    line-height: 24px;
+  font-size: 20px;
+  line-height: 24px;
 }
 
-.list:hover{
-    text-decoration: underline;
-    text-decoration-color: orange;
-    text-underline-offset: 10px;
-    
-}
-
-.techstack-wrapper p:hover {
-  cursor: pointer;
-  font-weight: bold;
-}
-
-
+/* Sublist default hidden */
 .sublist {
-  display: none;  /* Hide the sublist initially */
+  display: none;
 }
 
+/* Sublist visible when .show is present */
 .sublist.show {
-  display: block;  /* Show the sublist when the 'show' class is added */
   display: flex;
   gap: 20px;
 }
 
+/* Sublist item cards */
 .sublist p {
   display: flex;
-  border: 2px solid black;
+  border: 2px solid black; /* if you intended only a 1px border, remove this line */
   gap: 10px;
   align-items: center;
   justify-content: flex-start;
@@ -55,15 +41,36 @@
   width: 180px;
 }
 
+/* Sublist item hover */
 .sublist p:hover {
   background-color: #f0f0f0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Sublist item icon sizes */
 .sublist p img {
   margin-right: 10px;
   width: 24px;
   height: 24px;
 }
 
+/* Tabs row */
+.lists{
+  display: flex;
+  gap: 60px;
+}
 
+/* Tabs clickable */
+.lists .list {
+  cursor: pointer;
+  user-select: none;
+  transition: font-weight 0.2s ease;
+}
+
+/* ✅ Active state handles BOTH bold + orange underline (no ::after) */
+.lists .list.active {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: orange;
+  text-underline-offset: 10px;
+}
