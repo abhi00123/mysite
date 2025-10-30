@@ -1,104 +1,46 @@
-// Step 1: Select the last 3 divs containing the picture elements inside .newscroll.block
-var imageDivs = document.querySelectorAll('.newscroll-wrapper .newscroll.block > div:nth-last-child(-n+3)');
+// Select all testimonial divs (first 3) and image divs (last 3)
+const allDivs = document.querySelectorAll('.newscroll-wrapper .newscroll.block > div');
+const testimonials = Array.from(allDivs).slice(0, 3);
+const images = Array.from(allDivs).slice(-3);
 
-// Step 2: Select the .newscroll-wrapper where the new div will be appended
-var newscrollWrapper = document.querySelector('.newscroll-wrapper');
+// Create combined-images container dynamically
+const combinedDiv = document.createElement('div');
+combinedDiv.classList.add('combined-images');
+images.forEach(img => combinedDiv.appendChild(img));
+document.querySelector('.newscroll-wrapper').appendChild(combinedDiv);
 
-// Step 3: Create a new div with the class 'combined-images' to hold the last 3 divs
-var combinedDiv = document.createElement('div');
-combinedDiv.classList.add('combined-images'); // Add the class 'combined-images'
+// Find initial active index
+let currentIndex = testimonials.findIndex(div => div.classList.contains('active'));
+if (currentIndex === -1) currentIndex = 0; // fallback if none active
 
-// Step 4: Check if the image divs exist and append them to the combined div
-if (imageDivs.length > 0 && newscrollWrapper) {
-    imageDivs.forEach(function(div) {
-        // Append each of the last 3 divs (with pictures) to the new combined div
-        combinedDiv.appendChild(div);
-    });
-
-    // Step 5: Append the combined div inside the .newscroll-wrapper
-    newscrollWrapper.appendChild(combinedDiv);
-}
-// Select all the testimonial divs and images
-var testimonials = document.querySelectorAll('.newscroll-wrapper .newscroll.block > div');
-var images = document.querySelectorAll('.newscroll-wrapper .combined-images div picture img');
-
-// Function to show the next testimonial and zoom in the image
-function showNextTestimonial() {
-    // Get the currently visible testimonial (with active class)
-    var currentTestimonial = document.querySelector('.newscroll-wrapper .newscroll.block > div.active');
-    
-    // Get the next testimonial, loop back to the first if we are at the end
-    var nextTestimonial = currentTestimonial.nextElementSibling || testimonials[0];
-
-    // Hide the current testimonial and zoom out the current image
-    currentTestimonial.classList.remove('active');
-    currentTestimonial.classList.add('hidden');
-    var currentImage = currentTestimonial.querySelector('div picture img');
-    if (currentImage) currentImage.classList.remove('zoom-effect'); // Remove zoom effect
-
-    // Show the next testimonial and zoom in the corresponding image
-    nextTestimonial.classList.remove('hidden');
-    nextTestimonial.classList.add('active');
-    var nextImage = nextTestimonial.querySelector('div picture img');
-    if (nextImage) nextImage.classList.add('zoom-effect'); // Apply zoom effect
-}
-
-// Initial setup: Hide all testimonials except the first one and make it active
-testimonials.forEach(function(testimonial, index) {
-    if (index !== 0) {
-        testimonial.classList.add('hidden'); // Initially hide all except the first
+// Ensure initial state
+testimonials.forEach((t, i) => {
+    if (i === currentIndex) {
+        t.classList.add('active');
+        t.classList.remove('hidden');
     } else {
-        testimonial.classList.add('active'); // Set the first testimonial as active
+        t.classList.remove('active');
+        t.classList.add('hidden');
     }
 });
 
-// Step 3: Set interval for automatic transition every 5 seconds (adjust timing as needed)
-setInterval(showNextTestimonial, 5000); // Transition every 5 seconds
+// Function to rotate testimonial and reorder images
+function showNext() {
+    // Hide current testimonial
+    testimonials[currentIndex].classList.remove('active');
+    testimonials[currentIndex].classList.add('hidden');
 
+    // Next index
+    currentIndex = (currentIndex + 1) % testimonials.length;
 
+    // Show next testimonial
+    testimonials[currentIndex].classList.remove('hidden');
+    testimonials[currentIndex].classList.add('active');
 
-
-
-// Select all image divs and images
-var imageDivs = document.querySelectorAll('.combined-images > div');
-var images = document.querySelectorAll('.combined-images img');
-
-// Function to show the next image and apply the zoom effect
-function showNextImage() {
-    // Get the currently visible image (with active class)
-    var currentImageDiv = document.querySelector('.combined-images > div.active');
-    
-    // Get the next image div, loop back to the first if we are at the end
-    var nextImageDiv = currentImageDiv.nextElementSibling || imageDivs[0];
-
-    // Remove zoom effect and hide current image
-    currentImageDiv.classList.remove('active');
-    var currentImage = currentImageDiv.querySelector('img');
-    if (currentImage) currentImage.classList.remove('zoom-effect'); // Remove zoom effect
-
-    // Add zoom effect and show next image
-    nextImageDiv.classList.add('active');
-    var nextImage = nextImageDiv.querySelector('img');
-    if (nextImage) nextImage.classList.add('zoom-effect'); // Apply zoom effect
-
-    // Adjust the image scale based on their positions
-    imageDivs.forEach(function(div, index) {
-        if (index === 0) {
-            div.style.transform = "scale(1.5)"; // The first image should be larger
-        } else {
-            div.style.transform = "scale(1)"; // The other images are normal size
-        }
-    });
+    // Move corresponding image to first position
+    const activeImage = images[currentIndex];
+    combinedDiv.insertBefore(activeImage, combinedDiv.firstChild);
 }
 
-// Initial setup: Hide all images except the first one and make it active
-imageDivs.forEach(function(imageDiv, index) {
-    if (index !== 0) {
-        imageDiv.classList.remove('active'); // Initially hide all except the first
-    } else {
-        imageDiv.classList.add('active'); // Set the first image as active
-    }
-});
-
-// Step 3: Set interval for automatic transition every 5 seconds (adjust timing as needed)
-setInterval(showNextImage, 5000); // Transition every 5 seconds
+// Auto-rotate every 5 seconds
+setInterval(showNext, 5000);

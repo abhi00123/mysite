@@ -1,121 +1,144 @@
-/* Flexbox layout for the block */
-.newscroll.block {
-  display: flex;
-  flex-direction: column;
-  position: absolute; /* Stack all testimonials on top of each other */
-  top: 0;
-  left: 0;
-  width: 400px; /* Ensure testimonials take up full width */
-  height: auto; /* Make the container's height dynamic */
-  visibility: hidden; /* Initially hide all testimonials */
-  transition: opacity 1s ease-in-out; /* Smooth fade transition for testimonials */
-  z-index: -1;
-}
-
-/* Combined images container */
-.combined-images {
-  display: flex;
-  gap: 20px; /* Optional: space between images */
-  transition: transform 1s ease-in-out; /* Smooth transition for image zoom */
-  margin-left: 500px; /* Adjust to position images */
-  z-index: -1;
-}
-
-/* Flex layout for the section container */
-.section.newscroll-container {
-  display: flex;
-  flex-direction: column; 
-  gap: 20px;
-  margin-bottom: 160px;
-}
-
-/* Flex layout for the newscroll-wrapper */
 .newscroll-wrapper {
-  display: flex;
-  flex-direction: column; 
-  gap: 20px;
-  position: relative; /* Ensure stacking of testimonials */
-  height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 56px;
+    margin-left: 64px;
 }
 
-/* Zoom effect on images */
-.zoom-effect {
-  transform: scale(1.1); /* Zoom in effect */
-  transition: transform 1s ease-in-out; /* Apply transition effect for zoom */
+.newscroll.block {
+    width: 45%;
+    position: relative;
 }
 
-/* Hidden elements */
-.hidden {
-  visibility: hidden; /* Hide elements but still occupy space */
-  pointer-events: none; /* Prevent interaction when hidden */
+.newscroll.block > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: 
+        opacity 0.5s cubic-bezier(0.77, 0, 0.175, 1),
+        transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+    opacity: 0;
+    transform: translateY(50px);
+    z-index: 0;
+    pointer-events: none;
+    visibility: hidden;
+    margin-top: 30px;
 }
 
-/* Active testimonial will be visible */
-.newscroll-wrapper .newscroll.block > div.active {
-  visibility: visible;  /* Show active testimonial */
-  opacity: 1;
-  pointer-events: auto; /* Enable interaction for active testimonial */
-  z-index: 2; /* Ensure the active testimonial is on top */
-  position: absolute; /* Overlap all testimonials in the same place */
+.newscroll.block > div.active {
+    opacity: 1;
+    transform: translateY(0);
+    z-index: 1;
+    pointer-events: auto;
+    visibility: visible;
 }
 
-/* Style for h3 titles (optional) */
-.newscroll-wrapper .newscroll.block h3 {
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: bold;
+.newscroll.block > div.hidden {
+    opacity: 0;
+    transform: translateY(-50px);
+    z-index: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
 
-Combined images container 
+.combined-images {
+    display: flex;
+    gap: 48px;
+    width: 50%;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 240px;
+    margin-left: 36px;
+}
 
-/* Ensure all image divs are stacked */
 .combined-images > div {
-  position: absolute; /* Stack images on top of each other */
-  top: 0;
-  left: 0;
-  visibility: hidden; /* Initially hide all images */
-  opacity: 0; /* Initially hide all images */
-  transition: opacity 1s ease-in-out, visibility 1s ease-in-out; /* Smooth fade transition */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Active image div will be visible */
-.combined-images > div.active {
-  visibility: visible; /* Show active image */
-  opacity: 1; /* Make the active image visible */
-  z-index: 2; /* Ensure the active image is on top */
-  transform: scale(1); /* Reset any scaling on active image */
+.combined-images > div:first-child img {
+    width: 240px;
+    height: 240px;
+    transform: scale(1.0);
+    border-radius: 50%;
+    border: 2px solid #fa9132;
+    box-shadow: 0 0 0 2px #fff;
+    background: #fff;
+    object-fit: cover;
 }
 
-/* Image size adjustments for the first, second, and third images */
-.combined-images > div:first-child {
-  transform: scale(1.5); /* First image larger than the others */
-  transition: transform 1s ease-in-out;
-  margin: 40px;
-  width: 260px;
+.combined-images > div:not(:first-child) img {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    border: 2px solid #d8dde6;
+    background: #fff;
+    object-fit: cover;
+    transition: border-color 0.3s;
 }
 
-.combined-images > div:nth-child(2) {
-  transform: scale(1); /* Second image normal size */
-  transition: transform 1s ease-in-out;
-  margin-top: 69px;
-  width: 160px;
-}
-
-.combined-images > div:nth-child(3) {
-  transform: scale(1); /* Third image normal size */
-  transition: transform 1s ease-in-out;
-  margin-top: 78px;
-  width: 170px;
-}
-
-/* Zoom effect on images */
-.zoom-effect {
-  transform: scale(1.1); /* Zoom in effect */
-  transition: transform 1s ease-in-out; /* Smooth transition for zoom */
-}
-
-/* Ensure proper styling for images */
 .combined-images img {
-  width: 100%; /* Ensure images take full width of their container */
-  height: auto; /* Maintain image aspect ratio */
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Typography for name */
+.newscroll.block h3 {
+    font-weight: 700;
+    color: #232e3e;
+    margin-bottom: 2px;
+    margin-top: 0;
+    line-height: 1.2;
+    padding-left: 60px;
+    font-size: 1.2rem;
+}
+
+/* Typography for job post/subtitle */
+.newscroll.block h3 + p {
+    font-size: 0.96rem;
+    color: #8798a7;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 20px;
+    line-height: 1.16;
+    letter-spacing: 0.01em;
+    padding-left: 60px;
+}
+
+/* Orange inverted comma before main testimonial text
+   Assumes testimonial text is always the next <p> after the job post */
+.newscroll.block .active > div p:nth-of-type(2) {
+    position: relative;
+    padding-left: 60px;
+    margin-top: 20px;
+}
+
+.newscroll.block .active > div p:nth-of-type(2)::before {
+    content: "“";
+    color: #fa9132;
+    font-size: 4.3rem;
+    font-family: serif;
+    font-weight: 800;
+    position: absolute;
+    left: 0;
+    top: -20px;
+    line-height: 1;
+    padding-left: 21px;
+}
+
+/* General testimonial content paragraph style */
+.newscroll.block .active > div p {
+    font-size: 1 rem;
+    color: #232e3e;
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    padding-left: 60px;
 }
