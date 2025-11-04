@@ -1,0 +1,343 @@
+/* footer {
+  font-size: var(--body-font-size-xs);
+}
+.footer.block{
+  background-color: #002953;
+  color: white;
+}
+
+footer .footer > div {
+  margin: auto;
+  max-width: 1200px;
+  padding: 40px 24px 24px;
+}
+
+footer .footer p {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  footer .footer > div {
+    padding: 40px 32px 24px;
+  }
+}
+
+.below-section p{
+  width: 100%;
+  width: 1060px;
+  align-items: center;
+  margin-left: 260px;
+  margin-top: 14px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.linkedin-wrapper p {
+  display: flex;
+} */
+
+/* =========================================
+   BAJAJ FOOTER - FINAL FIXED VERSION
+   ========================================= */
+
+/* --- FOOTER WRAPPER --- */
+.footer-wrapper {
+  width: 100%;
+  background-color: #032B44;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 30px 10px 30px; */
+  font-family: "Rubik", sans-serif;
+  gap: 20px;
+  position: relative;
+}
+
+/* --- MAIN FOOTER NAVIGATION SECTION --- */
+.main-footer-second-main-container {
+  width: 100%;
+  max-width: 1088px;
+  /* display: flex; */
+  justify-content: center;
+}
+
+.main-footer-second-main.block > div {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4x4 grid layout */
+  gap: 80px;
+}
+
+.main-footer-second-main h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+}
+
+/* Make the single UL flow down then across with 4 rows per column */
+.main-footer-second-main ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: max-content;  /* 👈 keeps each column just wide enough */
+  column-gap: 64px;                /* space between the two columns */
+  row-gap: 8px;
+  align-items: start;
+  white-space: nowrap;             /* 👈 stops text from breaking into two lines */
+}
+
+
+/* Styling for items (keeps visual match with existing footer) */
+.main-footer-second-main ul li {
+  color: #fff;
+  font-family: var(--font-rubik, "Rubik", sans-serif);
+  font-size: 14px;
+  line-height: 22px;
+  transition: color 0.25s ease;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* Hover effect */
+/* .main-footer-second-main ul li:hover { color:white; } */
+
+/* Responsive: fall back to single column on small screens */
+@media (max-width: 740px) {
+  .main-footer-second-main ul {
+    display: block;
+  }
+  .main-footer-second-main ul li {
+    margin-bottom: 10px;
+  }
+}
+
+
+/* --- ADDRESS SECTION --- */
+.address-main-footer-container {
+  width: 100%;
+  max-width: 1088px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-top: none; /* ⬅️ Removed top border line */
+  padding-top: 10px;
+}
+
+.address-main-footer-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.address-main-footer.block {
+  position: relative;
+}
+
+/* Country tabs row */
+.address-main-footer.block > div:nth-child(1) {
+  display: flex;
+  gap: 20px;
+  border-bottom: none; /* ⬅️ Removed unwanted line */
+  padding-bottom: 8px;
+}
+
+.address-main-footer.block > div:nth-child(1) p {
+  color: #FFFFFF;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.address-main-footer.block > div:nth-child(1) p:hover,
+.address-main-footer.block > div:nth-child(1) p.active {
+  color: #00B3E6;
+}
+
+/* Country address blocks */
+.address-main-footer.block > div.country-group {
+  display: none;
+  margin-top: 10px;
+}
+
+.address-main-footer.block > div.country-group.active {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Address text */
+.address-main-footer.block p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* --- EMAIL & CONTACT --- */
+.footer-wrapper .default-content-wrapper {
+  width: 100%;
+  max-width: 1088px; /* match main footer width */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* ⬅️ align text to left */
+  justify-content: flex-start;
+  text-align: left;
+  color: #fff;
+  font-family: var(--font-rubik, "Rubik", sans-serif);
+  font-size: 14px;
+  line-height: 20px;
+  gap: 6px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer-wrapper .default-content-wrapper a {
+  color: white;
+  text-decoration: none;
+}
+
+
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 1024px) {
+  .main-footer-second-main.block > div {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-footer-second-main.block > div {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .address-main-footer.block > div:nth-child(1) {
+    flex-wrap: wrap;
+  }
+}
+
+/* Smooth hover */
+a, li, p {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+li:hover, a:hover {
+  transform: translateX(4px);
+}
+
+/* Match outer footer container */
+.footer-last,
+.footer-last > div {
+  width: 100%;
+  max-width: 1088px;
+}
+
+/* Center align like main .footer */
+.footer-last {
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  width: -webkit-fill-available;
+  height: auto;
+  background-color: #ffffff; /* optional – keep transparent if not needed */
+}
+
+/* Responsive layout */
+@media screen and (min-width: 740px) {
+  .footer-last {
+    width: -webkit-fill-available;
+    padding: 8px 0;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .footer-last {
+    width: 1088px;
+    padding: 8px 0;
+    height: auto;
+  }
+}
+
+/* Text inside footer-last */
+.footer-last p {
+  font-family: var(--font-rubik);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  color: #3d3d3d;
+  margin: 0;
+}
+
+/* Optional subtle fade-in if you append dynamically */
+.footer-last {
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+/* --- Company Section: Single neat vertical column --- */
+.main-footer-second-main h2#company + ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-footer-second-main h2#company + ul li {
+  color: #fff;
+  font-family: var(--font-rubik, "Rubik", sans-serif);
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap; /* keep text on one line */
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.main-footer-second-main h2#company + ul li:hover {
+  color: white;
+}
+/* --- Footer Links Hover Line Effect (Line Only, No Color Change) --- */
+.main-footer-second-main ul li {
+  position: relative;
+  color: #fff;
+  font-family: var(--font-rubik, "Rubik", sans-serif);
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+/* line effect */
+.main-footer-second-main ul li::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+/* hover effect — only the line expands */
+.main-footer-second-main ul li:hover::after {
+  width: 100%;
+}
