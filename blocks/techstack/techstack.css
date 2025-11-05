@@ -1,3 +1,7 @@
+.techstack-container .default-content-wrapper:first-of-type{
+  font-size: 30px;
+  font-weight: 500;
+}
 /* Image sizes inside techstack block */
 .techstack.block img{
   height: 40px;
