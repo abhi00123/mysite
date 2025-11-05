@@ -1,0 +1,234 @@
+.section.forms-container {
+    background-color: #f2f2f2;
+}
+
+.forms-wrapper {
+    padding-left: 40px;
+    padding-top: 12px;
+    
+}
+
+.forms-wrapper .forms.block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 50px;
+    align-items: flex-start;
+    max-width: 1200px;
+}
+
+.forms-wrapper .forms.block > div {
+    margin-bottom: 4px;
+    display: block;
+    padding: 0;
+}
+
+/* Header and Subheading Full Width */
+.forms-wrapper .forms.block > div:first-child {
+    grid-column: 1 / span 2;
+    max-height: 100px;
+}
+
+/* Name, Email, Captcha: left side */
+.forms-wrapper .forms.block > div:nth-child(2),
+.forms-wrapper .forms.block > div:nth-child(3),
+.forms-wrapper .forms.block > div:nth-child(4) {
+    grid-column: 1;
+    max-height: 100px;
+}
+
+/* Message block: right side */
+.forms-wrapper .forms.block > div:nth-child(5) {
+    grid-column: 2;
+    margin-top: -190px;
+}
+
+/* Checkbox + Submit: full width */
+.forms-wrapper .forms.block > div:nth-child(6),
+.forms-wrapper .forms.block > div:nth-child(7) {
+    grid-column: 1 / span 2;
+    margin-top: 18px;
+}
+/* Target the specific <p> if possible by container or context */
+#looking-for-innovation-that-delivers-impact + p {
+    color: #747474;
+}
+
+.forms-wrapper .forms.block > div > div {
+    font-family: var(--font-rubik);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #7d7d7d;
+
+}
+
+/* Headline & Subheadline */
+.forms-wrapper .forms.block > div:first-child h2 {
+    font-size: 2.1rem;
+    font-weight: bold;
+    color: #132d4e;
+    font-family: 'Rubik', Arial, sans-serif;
+    margin-bottom: 1rem;
+    line-height: 1.09;
+}
+.forms-wrapper .forms.block > div:first-child p {
+    color: #214e8e;
+    font-size: 1.2rem;
+    font-family: 'Rubik', Arial, sans-serif;
+    margin-bottom: 2.1rem;
+    font-weight: bold;
+}
+
+/* Inputs */
+.input {
+    width: 100%;
+    padding: 15px 12px;
+    border: 1px solid #0029;
+    border-radius: 7px;
+    font-size: 1.08rem;
+    background-color: #f2f2f2;;
+    font-family: 'Rubik', Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+.message-input {
+    resize: none;
+    min-height: 250px;
+    margin-bottom: 10px;
+}
+
+.forms-wrapper .forms.block label {
+    font-weight: 500;
+    color: #363636;
+    font-size: 1.08rem;
+    margin-bottom: 7px;
+    font-family: 'Rubik', Arial, sans-serif;
+    display: block;
+    max-width: 590px;
+    display: flex;
+}
+
+.privacy-label {
+    display: flex;
+    align-items: center;
+    font-size: 1.09rem;
+    color: #363636;
+    margin: -24px 0 0 0;
+}
+
+.privacy-checkbox {
+    margin-right: 10px;
+    accent-color: orange;
+    width: 19.refresh-btnpx;
+    height: 49px;
+    width: 30px;
+}
+
+/* Button */
+.submit-button {
+    width: 246px;                   /* Set fixed width as in example */
+    padding: 15px 12px;             /* Adjusted padding */
+    color: #fff;
+    background-color: #f50;         /* Background in hex equivalent for orange */
+    border: 1px solid #f50;         /* Border with same color */
+    border-radius: 7px;
+    font-size: 1.19rem;
+    font-family: 'Rubik', Arial, sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 14px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px #e2e2e2;
+    transition: color .5s ease-in-out, background-color .5s ease-in-out, border-color .5s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: #e47700;
+    border-color: #e47700;
+}
+
+/* Captcha Row Flex */
+.forms-wrapper .forms.block .captcha-row,
+.forms-wrapper .forms.block > div:nth-child(4) > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 0;
+}
+.captcha-label {
+    display: block;
+    font-weight: 500;
+    font-size: 12px;
+    color: #7d7d7d;
+    margin-left: 280px;
+}
+.captcha-code {
+    font-family: 'Rubik', monospace;
+    font-size: 1.13rem;
+    padding: 3px 50px;
+    background: #f2f2f2;;
+    border: 1px solid #ccc;
+    border-radius: 7px 0 0 7px;
+    letter-spacing: 2.2px;
+    display: inline-block;
+    min-width: 110px;
+    text-align: center;
+    height: 46px;
+    line-height: 32px;
+    margin-bottom: 0;                       
+    margin-top: 3px;
+    color: black;
+}
+.refresh-btn {
+    background: #146bab;
+    color: #fff;
+    border-radius: 0 7px 7px 0;
+    padding: 0 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.18rem;
+    height: 59px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid #ddd;
+    margin: 0;
+    margin-top: 3px;
+    box-shadow: 0 2px 6px #e2e2e2;
+}
+.captcha-input {
+    margin-left: 15px;
+    min-width: 150px;
+}
+
+@media (max-width: 1100px) {
+    .forms-wrapper .forms.block {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px 18px;
+    }
+    .forms-wrapper {
+        padding-left: 6vw;
+    }
+   
+    .message-input {
+        min-height: 140px;
+    }
+}
+@media (max-width: 800px) {
+    .forms-wrapper .forms.block {
+        display: block;
+        max-width: 98vw;
+        padding: 0;
+    }
+    .forms-wrapper .forms.block > div {
+        margin-top: 0 !important;
+        grid-column: unset !important;
+    }
+    .message-input {
+        min-height: 100px;
+    }
+    .forms-wrapper {
+        padding-left: 2vw;
+    }
+}

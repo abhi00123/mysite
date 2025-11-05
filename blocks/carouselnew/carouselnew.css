@@ -1,3 +1,16 @@
+.carouselnew-container .default-content-wrapper:first-of-type{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.carouselnew-container .default-content-wrapper:last-of-type p{
+  color: #005dac;
+  cursor: pointer;
+  text-align: right;
+  font-weight: bolder;
+  margin-right: 100px;
+}
+
 .carouselnew.block {
   position: relative;
   max-width: 1000px;
