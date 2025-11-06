@@ -12,7 +12,7 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .cards > ul > li:hover{
-  background: linear-gradient(135deg, #5b9eff, #2f63a6);
+  background: linear-gradient(131.68deg, rgba(78, 142, 189, 0.5) -30.2%, rgba(0, 95, 150, 0.9) 34.7%, rgba(1, 94, 144, 0.9) 71.59%, rgba(1, 96, 150, 0.55) 136.26%);
   color: white;
 }
 
