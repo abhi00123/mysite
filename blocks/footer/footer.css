@@ -6,7 +6,6 @@
 
 /* --- FOOTER WRAPPER --- */
 .footer-wrapper {
-  width: 100%;
   background-color: #032B44;
   color: #FFFFFF;
   display: flex;
@@ -217,8 +216,7 @@
 
 /* --- EMAIL & CONTACT --- */
 .footer-wrapper .default-content-wrapper {
-  width: 100%;
-  max-width: 1088px;
+  max-width: 384px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -248,7 +246,6 @@
   display: flex;
   justify-content: center;
   padding: 20px;
-  width: 100%;
   background-color: #ffffff;
 }
 

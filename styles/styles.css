@@ -231,7 +231,7 @@ main img {
 
 /* ========== Sections ========== */
 main > .section {
-  margin: 40px 0;
+  margin: 0px;
 }
 
 main > .section > div {
